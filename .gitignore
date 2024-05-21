@@ -1,10 +1,12 @@
 # dependencies
 /node_modules
+client/node_modules/
 /.pnp
 .pnp.js
 
 # testing
 /coverage
+.eslintcache
 
 # production
 /build
