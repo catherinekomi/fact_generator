@@ -1,0 +1,8 @@
+{
+  "short_name": "Interesting Fact Generator",
+  "name": "Interesting Fact Generator",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
