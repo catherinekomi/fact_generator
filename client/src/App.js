@@ -7,6 +7,8 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
 
+  const API_BASE_URL = process.env.API_BASE_URL_V || '';
+
   const sendMessage = async () => {
     try {
       const userMessage = `${animal}`;
@@ -16,7 +18,7 @@ function App() {
       ]);
       setIsTyping(true);
       const response = await axios.post(
-        'http://localhost:5000/generate-interesting-fact',
+        `${API_BASE_URL}/generate-interesting-fact`,
         {
           animal,
         }
