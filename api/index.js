@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/build')));
 
-app.post('/generate-interesting-fact', async (req, res) => {
+app.post('/api/generate-interesting-fact', async (req, res) => {
   const { animal } = req.body;
   const userMessage = `Create an interesting fact about the ${animal}, 2 sentences only and no more than 200 characters and no hashtags.`;
 

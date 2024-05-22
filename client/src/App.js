@@ -15,10 +15,9 @@ function App() {
         { type: 'user', message: userMessage },
       ]);
       setIsTyping(true);
-      const response = await axios.post(
-        'http://localhost:5000/generate-interesting-fact',
-        { animal }
-      );
+      const response = await axios.post('/api/generate-interesting-fact', {
+        animal,
+      });
 
       const llamaMessage = `${response.data.llamaMessage}`;
       // typing delay
