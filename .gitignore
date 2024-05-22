@@ -9,6 +9,8 @@ client/node_modules/
 .eslintcache
 
 # production
+**/package-lock.json
+client/build
 /build
 
 # misc
