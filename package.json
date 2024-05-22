@@ -4,10 +4,11 @@
   "main": "server.js",
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "node api/index.js",
+    "server": "node server.js",
     "client": "npm start --prefix client",
     "client:build": "npm run build --prefix client",
-    "build": "npm run client:build"
+    "build": "npm run client:build",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "axios": "^0.21.1",
