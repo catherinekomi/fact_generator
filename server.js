@@ -16,6 +16,12 @@ app.post('/generate-interesting-fact', async (req, res) => {
   const { animal } = req.body;
   const userMessage = `Create an interesting fact about the ${animal}, 2 sentences only and no more than 200 characters and no hashtags.`;
   const apiKey = process.env.API_KEY;
+
+  // Debugging statements
+  console.log('Received request for animal:', animal);
+  console.log('User message:', userMessage);
+  console.log('API Key:', apiKey ? 'Exists' : 'Missing');
+
   try {
     const userResponse = await axios.post(
       'https://api.openai.com/v1/chat/completions',
@@ -33,7 +39,8 @@ app.post('/generate-interesting-fact', async (req, res) => {
       { headers: { Authorization: 'Bearer ' + apiKey } }
     );
 
-    // console.log('User response:', userResponse.data);
+    // Debugging statements
+    console.log('User response:', JSON.stringify(userResponse.data, null, 2));
 
     if (
       !userResponse.data ||
@@ -46,6 +53,9 @@ app.post('/generate-interesting-fact', async (req, res) => {
     const chatGPTMessage = userResponse.data.choices[0].message.content.trim();
     const reply = JSON.parse(chatGPTMessage);
     const openAiReply = reply.fact;
+
+    // Debugging statement
+    console.log('OpenAI Reply:', openAiReply);
 
     res.json({ openAiReply });
   } catch (error) {
