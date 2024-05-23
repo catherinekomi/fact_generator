@@ -32,7 +32,7 @@ function App() {
           { type: 'llama', message: llamaMessage },
         ]);
         setIsTyping(false);
-      }, 2500);
+      }, 1500);
 
       setAnimal('');
     } catch (error) {
