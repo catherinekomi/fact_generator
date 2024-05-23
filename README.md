@@ -1,3 +1,5 @@
+<img width="570" alt="Screen Shot 2024-05-23 at 2 06 55 PM" src="https://github.com/catherinekomi/fact_generator/assets/64502672/9320b1e7-e8ef-402f-8ead-c15454ba4e8c">
+
 ## Frontend
 
 - **Framework**: React
