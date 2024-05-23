@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.post('/generate-interesting-fact', async (req, res) => {
   const { animal } = req.body;
   const userMessage = `Create an interesting fact about the ${animal}, 2 sentences only and no more than 200 characters and no hashtags.`;
-
+  const apiKey = process.env.API_KEY;
   try {
     const userResponse = await axios.post(
       'https://api.openai.com/v1/chat/completions',
@@ -30,7 +30,7 @@ app.post('/generate-interesting-fact', async (req, res) => {
           { role: 'user', content: userMessage },
         ],
       },
-      { headers: { Authorization: `Bearer ${process.env.API_KEY}` } }
+      { headers: { Authorization: 'Bearer ' + apiKey } }
     );
 
     // console.log('User response:', userResponse.data);

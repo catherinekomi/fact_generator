@@ -18,7 +18,7 @@ function App() {
       ]);
       setIsTyping(true);
       const response = await axios.post(
-        `${API_BASE_URL}/generate-interesting-fact`,
+        API_BASE_URL + '/generate-interesting-fact',
         {
           animal,
         }
