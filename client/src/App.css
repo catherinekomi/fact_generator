@@ -47,7 +47,7 @@
   color: white;
 }
 
-.llama .message-text {
+.chatgpt .message-text {
   align-self: flex-start;
   background-color: #e0e0e0;
   color: black;

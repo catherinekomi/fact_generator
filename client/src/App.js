@@ -24,12 +24,12 @@ function App() {
         }
       );
 
-      const llamaMessage = `${response.data.llamaMessage}`;
+      const openAiReply = `${response.data.openAiReply}`;
       // typing delay
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { type: 'llama', message: llamaMessage },
+          { type: 'ChatGPT', message: openAiReply },
         ]);
         setIsTyping(false);
       }, 1500);
@@ -54,14 +54,14 @@ function App() {
           {messages.map((msg, index) => (
             <div key={index} className={`message ${msg.type}`}>
               <div className='message-name'>
-                {msg.type === 'user' ? 'You' : 'Llama'}
+                {msg.type === 'user' ? 'You' : 'ChatGPT'}
               </div>
               <div className='message-text'>{msg.message}</div>
             </div>
           ))}
           {isTyping && (
-            <div className='message llama'>
-              <div className='message-name'>Llama</div>
+            <div className='message chatgpt'>
+              <div className='message-name'>ChatGPT</div>
               <div className='typing-indicator'>
                 <span></span>
                 <span></span>

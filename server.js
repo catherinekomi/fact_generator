@@ -18,18 +18,36 @@ app.post('/generate-interesting-fact', async (req, res) => {
 
   try {
     const userResponse = await axios.post(
-      'https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct',
-      { inputs: userMessage },
+      'https://api.openai.com/v1/chat/completions',
+      {
+        model: 'gpt-3.5-turbo',
+        response_format: { type: 'json_object' },
+        messages: [
+          {
+            role: 'system',
+            content: 'You are a helpful assistant designed to output JSON.',
+          },
+          { role: 'user', content: userMessage },
+        ],
+      },
       { headers: { Authorization: `Bearer ${process.env.API_KEY}` } }
     );
 
-    if (!userResponse.data || !userResponse.data[0]) {
+    // console.log('User response:', userResponse.data);
+
+    if (
+      !userResponse.data ||
+      !userResponse.data.choices ||
+      userResponse.data.choices.length === 0
+    ) {
       throw new Error('Invalid response structure');
     }
 
-    const llamaMessage = userResponse.data[0].generated_text;
+    const chatGPTMessage = userResponse.data.choices[0].message.content.trim();
+    const reply = JSON.parse(chatGPTMessage);
+    const openAiReply = reply.fact;
 
-    res.json({ llamaMessage });
+    res.json({ openAiReply });
   } catch (error) {
     console.error(
       'Error generating interesting fact:',
